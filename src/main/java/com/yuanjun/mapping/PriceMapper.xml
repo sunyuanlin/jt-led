@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuanjun.dao.PriceDao" >
+
+  <select id="insertPrice" resultType="com.yuanjun.bean.Price">
+  	 insert into PIECE_PRICE_TEST(STATION_ID,EQUIPMENTBIGTYPE,PRODUCTBIGTYPE,PRICE,TIMES,CR_UID,CR_DTIME) 
+  	 values (#{STATION_ID},#{EQUIPMENTBIGTYPE},#{PRODUCTBIGTYPE},#{PRICE},#{TIMES},#{CR_UID},#{CR_DTIME})  
+  </select>
+  
+  <select id="findAll" resultType="com.yuanjun.bean.Price">
+  	 select STATION_ID,EQUIPMENTBIGTYPE,PRODUCTBIGTYPE,PRICE,CR_UID,CR_DTIME  from PIECE_PRICE_TEST order by PIECE_PRICE_ID ASC
+  </select>
+  
+  <select id="drop" resultType="com.yuanjun.bean.Price">
+  	 truncate table PIECE_PRICE_TEST 
+  </select>
+  
+</mapper>

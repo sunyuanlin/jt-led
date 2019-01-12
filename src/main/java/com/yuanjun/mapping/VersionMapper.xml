@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuanjun.dao.VersionDao" >
+
+  <select id="insertVerion" resultType="com.yuanjun.bean.Version">
+  	 insert into PIECE_PRICE_VERSION (VERSION, ADDRESS) values (#{VERSION},#{ADDRESS})  
+  </select>
+  
+  <select id="MAXID" resultType="com.yuanjun.bean.Version">
+  	 SELECT nvl(MAX(ID),0) as id FROM PIECE_PRICE_VERSION
+  </select>
+  
+  <select id="findAll" resultType="com.yuanjun.bean.Version">
+  	 SELECT * FROM PIECE_PRICE_VERSION  order by ID DESC
+  </select>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuanjun.dao.TestDao" >
+
+  <select id="findAll" resultType="com.yuanjun.bean.Test">
+  	 select DEPARTMENT_ID,STATION_DESC,CALENDAR_SEQ,MOVE_OUT_QTY  from VIEW_PROCEDURE where 
+  	 CALENDAR_SEQ &gt;= #{startDate} AND CALENDAR_SEQ &lt;= #{endDate}
+  </select>
+  
+  <select id="detail" resultType="com.yuanjun.bean.Test">
+  	 select DEPARTMENT_ID,STATION_DESC,CALENDAR_SEQ,MOVE_OUT_QTY  from VIEW_PROCEDURE where 
+  	 CALENDAR_SEQ &gt;= #{startDate} AND CALENDAR_SEQ &lt;= #{endDate} AND Department_id= #{departMent}
+  </select>
+  
+  <select id="detail_a" resultType="com.yuanjun.bean.Test1">
+  	select OPERATION_NAME,EQUIPMENT_UNIT,PRODUCT_NAME,CUSTOMER_LOT_NO,MOVE_OUT_QTY1  from FAB_OPERATION_OUT_SUMM where 
+  	 CALENDAR_DATE=TO_DATE('2018-12-04','YYYY-MM-DD') AND 
+  	 SUBSTR(EQUIPMENT_UNIT,3,1) ='A'  and SUBSTR(EQUIPMENT_UNIT,1,1) ='H' 
+  	 and operation_name like '固晶%'
+  </select>
+  
+  <select id="list" resultType="com.yuanjun.bean.demo">
+	select Product_name from FAB_OPERATION_OUT_SUMM where (operation_name like '固晶%' or operation_name = '装带' or operation_name = '焊线' or operation_name like '外观%' or operation_name = '点胶' or operation_name = '模造' or operation_name = '切割'or operation_name = '分光'  ) AND CALENDAR_DATE=TO_DATE('2018-12-03','YYYY-MM-DD') and SUBSTR(EQUIPMENT_UNIT,3,1) ='A' and SUBSTR(EQUIPMENT_UNIT,1,1) !='A' AND substr(Product_name, -3,1)='-'  group by Product_name 
+
+  </select>
+  
+  <select id="selectId" resultType="com.yuanjun.bean.DepartMent">
+	select DEPARTMENT_ID from V_DEPARTMENT_MASTER where DEPARTMENT_DESC = #{departMent}
+
+  </select>
+  
+</mapper>

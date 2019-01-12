@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuanjun.dao.PriceVersionDao" >
+
+  <select id="insertPriceVersion" resultType="com.yuanjun.bean.Version">
+  	 insert into PIECE_PRICE_VERSION_DETAIL(STATION_ID,EQUIPMENTBIGTYPE,PRODUCTBIGTYPE,PRICE,TIMES,CR_UID,VERSION_ID) 
+  	 values (#{STATION_ID},#{EQUIPMENTBIGTYPE},#{PRODUCTBIGTYPE},#{PRICE},#{TIMES},#{CR_UID},#{VERSION_ID})  
+  </select>
+  
+</mapper>
